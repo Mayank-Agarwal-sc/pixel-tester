@@ -18,10 +18,41 @@
     </style>
 </head>
 <body>
-
-    <button onclick="console.log('Button 1 clicked')">Button 1</button>
-    <button onclick="console.log('Button 2 clicked')">Button 2</button>
-    <button onclick="console.log('Button 3 clicked')">Button 3</button>
-
+    <button onclick="handleAddToCart()">Add to cart</button>
+    <button onclick="handleLead()">Lead</button>
+    <button onclick="handlePurchase()">Purchase</button>
 </body>
 </html>
+<script>
+    function handleAddToCart() {
+        console.log('Add to cart button clicked')
+        scq('Add to cart', 'pre_defined')
+    }
+    function handleLead(){
+        console.log('Lead button clicked')
+        scq('Lead', 'pre_defined')
+    }
+    function handlePurchase(){
+        console.log('Purchase button clicked')
+        scq('Purchase', 'pre_defined')
+    }
+</script>
+<script>	
+    (function (w, d, s, l, i) {
+        w['scSdkId'] = i;
+        w[l] = w[l] || []
+        w.scq = function (eventName, eventType, p) {
+        var props = p || {}
+          w[l].push({ eventName: eventName, eventType: eventType, meta: props, eventFireTs: Date.now() })
+        };
+        w.scq("PAGE_VIEW", "AUTO", {
+          pageUrl: w.location.href
+        });
+        var scr = d.createElement(s);
+        scr.type = 'text/javascript';
+        scr.async = true;
+        scr.src = 'https://sc-events-sdk.sharechat.com/web-sdk.js';
+        var x = d.getElementsByTagName(s)[0];
+        x.parentNode.insertBefore(scr, x);
+      })(window, document, "script", "scLayer", "fWUrBmMkws");
+  </script>
